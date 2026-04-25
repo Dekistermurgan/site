@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xsu.doll | Protected</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            /* Anti-seleção de texto */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* Camada da Imagem com Blur */
+        .bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+                              url('https://i.imgur.com/gZsLZou.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(5px); /* O efeito de desfoque aqui */
+            transform: scale(1.1); /* Aumenta um pouco para não aparecer borda branca no blur */
+            z-index: -1;
+        }
+
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 15vh; /* Subindo o título mais um pouco */
+        }
+
+        h1 {
+            color: #fff;
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-weight: 900;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+                         0 0 30px rgba(255, 255, 255, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #fff;
+            margin: 20px 0 40px 0;
+            box-shadow: 0 0 15px #fff;
+        }
+
+        .btn-discord {
+            padding: 18px 55px;
+            font-size: 0.9rem;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-discord:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <div class="bg-wrapper"></div>
+
+    <div class="content">
+        <h1>Xsu.doll</h1>
+        <div class="divider"></div>
+        <a href="https://discord.gg/6tBTyh29" target="_blank" class="btn-discord">
+            Join Discord
+        </a>
+    </div>
+
+    <script>
+        // Bloqueia F12 e atalhos de inspeção
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; } // F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+Shift+C
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U (Ver código fonte)
+        };
+    </script>
+</body>
+</html>
